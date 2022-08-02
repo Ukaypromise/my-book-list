@@ -1,10 +1,16 @@
 // Book Clas
-class Book {
-  constructor(title, author, isbn) {
-    this.title = title;
-    this.author = author;
-    this.isbn = isbn;
-  }
+// class Book {
+//   constructor(title, author, isbn) {
+//     this.title = title;
+//     this.author = author;
+//     this.isbn = isbn;
+//   }
+// }
+
+function Book(title, author, isbn) {
+  this.title = title;
+  this.author = author;
+  this.isbn = isbn;
 }
 
 // UI Class
@@ -27,7 +33,7 @@ class UI {
     }
   }
 
-// Throw Alert
+  // Throw Alert
   static throwAlert(message, className) {
     const div = document.createElement("div");
     div.className = `alert alert-${className}`;
@@ -37,7 +43,6 @@ class UI {
     container.insertBefore(div, form);
     // Set Timeout
     setTimeout(() => document.querySelector(".alert").remove(), 3000);
-    
   }
 
   //   Clear Fields
@@ -80,7 +85,6 @@ class Store {
       }
     });
     localStorage.setItem("books", JSON.stringify(books));
-
   }
 }
 // Event to Display Books
@@ -93,11 +97,11 @@ form.addEventListener("submit", (e) => {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const isbn = document.querySelector("#isbn").value;
-// Validates all fields
+  // Validates all fields
   if (title === "" || author === "" || isbn === "") {
     UI.throwAlert("Please fill in all fields", "danger");
   } else {
-    const book = new Book(title, author, isbn);    
+    const book = new Book(title, author, isbn);
     // Add Book to UI
     UI.addBookToList(book);
     // Add Book to Store
